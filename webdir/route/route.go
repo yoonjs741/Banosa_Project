@@ -6,7 +6,7 @@ import (
 	"github.com/labstack/echo"
 )
 
-// Route :
+// Route : Route controller to path
 func Route() *echo.Echo {
 	e := echo.New()
 	e.GET("/", controller.HelloworldCTRL)
