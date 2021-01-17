@@ -13,11 +13,11 @@ func HelloworldCTRL(c echo.Context) error {
 }
 
 func HelloAssonCTRL(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello Asson!")
+	return c.String(http.StatusOK, "Hello Asson! Hm...")
 }
 
 func HelloDonjonCTRL(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello DonJon!")
+	return c.String(http.StatusOK, "Hello DonJon! What should I do next :<")
 }
 
 func HelloQueryCTRL(c echo.Context) error {
