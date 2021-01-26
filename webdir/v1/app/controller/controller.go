@@ -22,4 +22,10 @@ func HelloDonjonCTRL(c echo.Context) error {
 
 func HelloQueryCTRL(c echo.Context) error {
 	return c.String(http.StatusOK, c.QueryParams().Encode())
+	//팩토리얼 함수에서 값 받아서 출력만 해주면 되나??
 }
+
+//  쿼리값 입력 받아서 팩토리얼 구하는 함수
+//func factorial(d) error {
+//	qry1 :=
+//}
