@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"Banosa_Project/webdir/v1/app/factorial"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -22,7 +23,16 @@ func HelloDonjonCTRL(c echo.Context) error {
 
 func HelloQueryCTRL(c echo.Context) error {
 	return c.String(http.StatusOK, c.QueryParams().Encode())
-	//팩토리얼 함수에서 값 받아서 출력만 해주면 되나??
+}
+
+func HelloParamCTRL(c echo.Context) error {
+	return c.String(http.StatusOK, c.QueryString())
+}
+
+func HelloQueryFacto(c echo.Context) error {
+	id := c.QueryString()
+	return c.JSON(200, factorial.GetFacto(id))
+	//	return c.String(http.StatusOK, factorial.GetFacto)
 }
 
 //  쿼리값 입력 받아서 팩토리얼 구하는 함수
