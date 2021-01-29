@@ -30,7 +30,8 @@ func HelloParamCTRL(c echo.Context) error {
 }
 
 func HelloQueryFacto(c echo.Context) error {
-	id := c.QueryString()
+	//id := c.QueryString()
+	id := c.QueryParam("id") //id의 값만 보게 변경
 	return c.JSON(200, factorial.GetFacto(id))
 	//	return c.String(http.StatusOK, factorial.GetFacto)
 }
