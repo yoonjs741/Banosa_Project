@@ -4,19 +4,16 @@ import (
 	"strconv"
 )
 
-// GetFacto : Get QueryID from controller and calculate factorial and return it
-func GetFacto(QueryID string) string {
+// GetFacto : Get QueryID from controller and calculate factorial and return string
+// 입력값 int로 변경
+func GetFacto(QueryID int) string {
 
-	var QueryIDint int
-	QueryIDFactorial := 1
+	var QueryIDFactorial int = 1
 
-	QueryIDint, _ = strconv.Atoi(QueryID)
-
-	for i := 1; i <= QueryIDint; i++ {
+	for i := 1; i <= QueryID; i++ {
 		QueryIDFactorial *= i
 	}
 
 	QueryIDFactorialResult := strconv.Itoa(QueryIDFactorial)
-
 	return QueryIDFactorialResult
 }

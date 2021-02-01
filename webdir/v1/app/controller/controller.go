@@ -2,7 +2,7 @@ package controller
 
 import (
 	"Banosa_Project/webdir/v1/app/factorial"
-	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -38,15 +38,16 @@ func HelloParamCTRL(c echo.Context) error {
 // HelloQueryFacto : Return QueryFacto string as http ok to CTRL
 func HelloQueryFacto(c echo.Context) error {
 	var StrconvErr error
+	var IDint int
 
 	id := c.QueryParam("id") //id의 값만 보게 변경
 
-	_, StrconvErr = strconv.Atoi(id)
+	IDint, StrconvErr = strconv.Atoi(id)
 
-	fmt.Println(StrconvErr)
-	if StrconvErr == nil {
-		return c.JSON(200, factorial.GetFacto(id))
-	} else {
+	if StrconvErr != nil {
+		log.Println(StrconvErr)
 		return c.String(http.StatusOK, "Please input only number.")
 	}
+
+	return c.String(http.StatusOK, factorial.GetFacto(IDint))
 }
