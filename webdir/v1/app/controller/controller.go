@@ -12,8 +12,8 @@ import (
 
 // ResponseJSON : Reponse data sturct
 type ResponseJSON struct {
-	Query string `json:"Query" xml:"Query"`
-	Data  string `json:"Data" xml:"Data"`
+	Input string
+	Data  string `json:"Result"`
 }
 
 // HelloworldCTRL : Return string as 200 to CTRL
@@ -59,4 +59,23 @@ func HelloQueryFacto(c echo.Context) error {
 	// GetFacto 입력값 int로 변경
 	// strconv 대신 fmt.Sprintf 사용. -> 더 빠르다고 함
 	return c.String(http.StatusOK, fmt.Sprintf("%d", factorial.GetFacto(idInt)))
+}
+
+// HelloQueryFactoJSON : Return QueryFacto string as JSON to CTRL
+func HelloQueryFactoJSON(c echo.Context) error {
+
+	id := c.QueryParam("id")
+	idInt, err := strconv.Atoi(id)
+
+	if err != nil {
+		log.Println(err)
+		return c.String(http.StatusOK, "Please input only number.")
+	}
+
+	factoResultJSON := new(ResponseJSON)
+
+	factoResultJSON.Input = c.QueryParam("id")
+	factoResultJSON.Data = fmt.Sprintf("%d", factorial.GetFacto(idInt)) //Same with test:= ResponseJSON{}
+
+	return c.JSON(http.StatusOK, factoResultJSON)
 }
