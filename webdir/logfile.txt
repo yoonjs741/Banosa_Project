@@ -1,0 +1,22 @@
+INFO: 2021/02/01 11:19:08 main.go:31: Test
+INFO: 2021/02/01 11:19:08 main.go:25: End of Program
+INFO: 2021/02/01 11:21:48 main.go:31: Test
+INFO: 2021/02/01 11:21:48 main.go:25: End of Program
+INFO: 2021/02/01 11:23:27 main.go:31: Test
+INFO: 2021/02/01 11:23:27 main.go:25: End of Program
+INFO: 2021/02/01 11:23:49 main.go:31: Test
+INFO: 2021/02/01 11:23:49 main.go:25: End of Program
+INFO: 2021/02/01 11:24:20 main.go:31: Test
+INFO: 2021/02/01 11:24:20 main.go:25: End of Program
+INFO: 2021/02/01 11:25:20 main.go:31: Test
+INFO: 2021/02/01 11:25:20 main.go:25: End of Program
+INFO: 2021/02/01 11:26:15 main.go:31: Test
+INFO: 2021/02/01 11:26:15 main.go:25: End of Program
+INFO: 2021/02/01 11:27:00 main.go:31: Test
+INFO: 2021/02/01 11:27:00 main.go:25: End of Program
+INFO: 2021/02/01 11:29:05 main.go:31: Test
+INFO: 2021/02/01 11:29:05 main.go:25: End of Program
+INFO: 2021/02/01 11:29:35 main.go:31: Test
+INFO: 2021/02/01 11:29:35 main.go:25: End of Program
+INFO: 2021/02/01 11:30:03 main.go:31: Test
+INFO: 2021/02/01 11:30:03 main.go:25: End of Program

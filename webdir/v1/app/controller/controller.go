@@ -33,10 +33,5 @@ func HelloQueryFacto(c echo.Context) error {
 	//id := c.QueryString()
 	id := c.QueryParam("id") //id의 값만 보게 변경
 	return c.JSON(200, factorial.GetFacto(id))
-	//	return c.String(http.StatusOK, factorial.GetFacto)
-}
 
-//  쿼리값 입력 받아서 팩토리얼 구하는 함수
-//func factorial(d) error {
-//	qry1 :=
-//}
+}
