@@ -1,12 +1,9 @@
 package factorial
 
-import (
-	"strconv"
-)
-
 // GetFacto : Get QueryID from controller and calculate factorial and return string
 // 입력값 int로 변경
-func GetFacto(QueryID int) string {
+// 응답값도 int로 변경
+func GetFacto(QueryID int) int {
 
 	var QueryIDFactorial int = 1
 
@@ -14,6 +11,5 @@ func GetFacto(QueryID int) string {
 		QueryIDFactorial *= i
 	}
 
-	QueryIDFactorialResult := strconv.Itoa(QueryIDFactorial)
-	return QueryIDFactorialResult
+	return QueryIDFactorial
 }
