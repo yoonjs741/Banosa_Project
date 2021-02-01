@@ -20,3 +20,13 @@ INFO: 2021/02/01 11:29:35 main.go:31: Test
 INFO: 2021/02/01 11:29:35 main.go:25: End of Program
 INFO: 2021/02/01 11:30:03 main.go:31: Test
 INFO: 2021/02/01 11:30:03 main.go:25: End of Program
+INFO: 2021/02/01 11:39:34 main.go:31: Test
+INFO: 2021/02/01 11:39:34 main.go:25: End of Program
+INFO: 2021/02/01 11:50:58 main.go:31: Test
+INFO: 2021/02/01 11:50:58 main.go:25: End of Program
+INFO: 2021/02/01 11:52:36 main.go:31: Test
+INFO: 2021/02/01 11:52:36 main.go:25: End of Program
+INFO: 2021/02/01 11:53:28 main.go:31: Test
+INFO: 2021/02/01 11:53:28 main.go:25: End of Program
+INFO: 2021/02/01 11:57:21 main.go:31: Test
+INFO: 2021/02/01 11:57:21 main.go:25: End of Program
