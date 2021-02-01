@@ -2,6 +2,7 @@ package controller
 
 import (
 	"Banosa_Project/webdir/v1/app/factorial"
+	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -43,43 +44,19 @@ func HelloParamCTRL(c echo.Context) error {
 
 // HelloQueryFacto : Return QueryFacto string as http ok to CTRL
 func HelloQueryFacto(c echo.Context) error {
-	var StrconvErr error
-	var IDint int
 
 	id := c.QueryParam("id") //id의 값만 보게 변경
 
-	//strconv.Atoi IDint 변수에 입력
-	IDint, StrconvErr = strconv.Atoi(id)
+	//strconv.Atoi idInt 변수에 입력
+	idInt, strConverr := strconv.Atoi(id)
 
-	if StrconvErr != nil {
-		log.Println(StrconvErr)
+	// strConverr가 nil이면 factorial.GetFacto 응답하기로 변경 else 문 제거,
+	if strConverr != nil {
+		log.Println(strConverr)
 		return c.String(http.StatusOK, "Please input only number.")
 	}
 
-	// StrconvErr가 nil이면 factorial.GetFacto 응답하기로 변경 else 문 제거,
 	// GetFacto 입력값 int로 변경
-
-	return c.String(http.StatusOK, strconv.Itoa(factorial.GetFacto(IDint)))
-}
-
-// HelloQueryFactoJSON : Return QueryFacto string as JSON to CTRL
-func HelloQueryFactoJSON(c echo.Context) error {
-	//	var StrconvErr error
-	//var IDint int
-
-	//id := c.QueryParam("id")
-	//IDint, StrconvErr = strconv.Atoi(id)
-
-	//Data := factorial.GetFacto(IDint)
-	/*
-		if StrconvErr != nil {
-			fmt.Println(StrconvErr)
-			return c.String(http.StatusOK, "Please input only number.")
-		}
-	*/
-	R := &ResponseJSON{
-		Query: "id",
-		Data:  "Data",
-	}
-	return c.JSON(http.StatusOK, R)
+	// strconv 대신 fmt.Sprintf 사용. -> 더 빠르다고 함
+	return c.String(http.StatusOK, fmt.Sprintf("%d", factorial.GetFacto(idInt)))
 }

@@ -1,15 +1,15 @@
 package factorial
 
-// GetFacto : Get QueryID from controller and calculate factorial and return string
+// GetFacto : Get queryID from controller and calculate factorial and return string
 // 입력값 int로 변경
 // 응답값도 int로 변경
-func GetFacto(QueryID int) int {
+func GetFacto(queryID int) int {
 
-	var QueryIDFactorial int = 1
+	var queryIDFactorial int = 1
 
-	for i := 1; i <= QueryID; i++ {
-		QueryIDFactorial *= i
+	for i := 1; i <= queryID; i++ {
+		queryIDFactorial *= i
 	}
 
-	return QueryIDFactorial
+	return queryIDFactorial
 }
