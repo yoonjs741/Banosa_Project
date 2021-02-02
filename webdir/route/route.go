@@ -17,5 +17,4 @@ func Route() *echo.Echo {
 	e.GET("/facto", controller.HelloQueryFacto)
 	e.GET("/factojson", controller.HelloQueryFactoJSON)
 	return e
-
 }

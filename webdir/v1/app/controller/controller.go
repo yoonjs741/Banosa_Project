@@ -18,8 +18,9 @@ type ResponseJSON struct {
 
 // HelloworldCTRL : Return string as 200 to CTRL
 func HelloworldCTRL(c echo.Context) error {
-	//return c.String(http.StatusOK, "Hello World!")
-	return c.HTML(200, "<h2> Welcome to Banosa </h2>")
+	return c.String(http.StatusOK, "Hello World!")
+	//return c.HTML(200, html/index.html)
+
 }
 
 // HelloAssonCTRL : Return Asson string as http ok to CTRL
@@ -58,10 +59,12 @@ func HelloQueryFacto(c echo.Context) error {
 
 	// GetFacto 입력값 int로 변경
 	// strconv 대신 fmt.Sprintf 사용. -> 더 빠르다고 함
-	return c.String(http.StatusOK, fmt.Sprintf("%d", factorial.GetFacto(idInt)))
+	// 다시 strconv 사용. -> fmt.Sprintf 는 타입 변환과 출력을 동시에 할때 빠르고, 여기처럼 함수에 넣어서 바로 사용할땐 strconv가 더 빠르다고 함
+	result := strconv.Itoa(factorial.GetFacto(idInt))
+	return c.String(http.StatusOK, result)
 }
 
-// HelloQueryFactoJSON : Return QueryFacto string as JSON to CTRL
+// HelloQueryFactoJSON : Return QueryFacto string as JSON to CTRLe
 func HelloQueryFactoJSON(c echo.Context) error {
 
 	id := c.QueryParam("id")
