@@ -2,6 +2,7 @@ package controller
 
 import (
 	"Banosa_Project/webdir/v1/app/factorial"
+	"Banosa_Project/webdir/v1/app/pricing"
 	"fmt"
 	"log"
 	"net/http"
@@ -14,6 +15,12 @@ import (
 type ResponseJSON struct {
 	Input string
 	Data  string `json:"Result"`
+}
+
+type ResponsePriceJSON struct {
+	Value  string
+	Coupon string
+	Price  string
 }
 
 // HelloworldCTRL : Return string as 200 to CTRL
@@ -81,4 +88,29 @@ func HelloQueryFactoJSON(c echo.Context) error {
 	factoResultJSON.Data = fmt.Sprintf("%d", factorial.GetFacto(idInt)) //Same with test:= ResponseJSON{}
 
 	return c.JSON(http.StatusOK, factoResultJSON)
+}
+
+func HelloPricingJSON(c echo.Context) error {
+	value := c.QueryParam("value")
+	discount := c.QueryParam("coupon")
+
+	valueInt, err1 := strconv.Atoi(value)
+	discountInt, err2 := strconv.Atoi(discount)
+
+	if err1 != nil {
+		log.Println(err1)
+		return c.String(http.StatusOK, "Please check Value")
+	}
+
+	if err2 != nil {
+		log.Println(err2)
+		return c.String(http.StatusOK, "Please check coupon")
+	}
+	priceResultJSON := new(ResponsePriceJSON)
+
+	priceResultJSON.Value = c.QueryParam("value")
+	priceResultJSON.Coupon = c.QueryParam("coupon")
+	priceResultJSON.Price = fmt.Sprintf("%d", pricing.GetPrice(valueInt, discountInt))
+
+	return c.JSON(http.StatusOK, priceResultJSON)
 }
