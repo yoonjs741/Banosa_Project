@@ -17,6 +17,6 @@ func Route() *echo.Echo {
 	e.GET("/facto", controller.HelloQueryFacto)
 	e.GET("/factojson", controller.HelloQueryFactoJSON)
 	e.GET("/price", controller.HelloPricingJSON)
-	e.GET("/gql", controller.HelloGQLJSON)
+	//e.GET("/gql", controller.HelloGQLJSON)
 	return e
 }

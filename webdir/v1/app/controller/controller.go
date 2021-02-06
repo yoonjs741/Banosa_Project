@@ -2,7 +2,6 @@ package controller
 
 import (
 	"Banosa_Project/webdir/v1/app/factorial"
-	"Banosa_Project/webdir/v1/app/graphql"
 	"Banosa_Project/webdir/v1/app/pricing"
 	"fmt"
 	"log"
@@ -116,6 +115,6 @@ func HelloPricingJSON(c echo.Context) error {
 	return c.JSON(http.StatusOK, priceResultJSON)
 }
 
-func HelloGQLJSON(c echo.Context) error {
-	return c.String(http.StatusOK, graphql.GetPeopleData())
-}
+//func HelloGQLJSON(c echo.Context) error {
+//	return c.String(http.StatusOK, graphql.GetPeopleData())
+//}
