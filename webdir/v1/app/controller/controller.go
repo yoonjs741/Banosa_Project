@@ -115,6 +115,7 @@ func HelloPricingJSON(c echo.Context) error {
 	return c.JSON(http.StatusOK, priceResultJSON)
 }
 
-//func HelloGQLJSON(c echo.Context) error {
-//	return c.String(http.StatusOK, graphql.GetPeopleData())
-//}
+/*func HelloGQLJSON(c echo.Context) error {
+	return c.String(http.StatusOK, graphql.GetQueryresp())
+}
+*/
