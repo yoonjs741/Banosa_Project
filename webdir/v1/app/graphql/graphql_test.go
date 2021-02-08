@@ -1,44 +1,41 @@
 package graphql
 
 import (
-	"context"
-	"log"
+	"bytes"
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
 	"testing"
-
-	"github.com/machinebox/graphql"
+	"time"
 )
 
 type ResponseStruct struct {
 }
 
 func TestGetQueryresp(t *testing.T) {
-
-	// create a client (safe to share across requests)
-	client := graphql.NewClient("https://machinebox.io/graphql")
-
-	// make a request
-	req := graphql.NewRequest(`
-    query ($key: String!) {
-        items (id:$key) {
-            field1
-            field2
-            field3
-        }
-    }
-`)
-
-	// set any variables
-	req.Var("key", "value")
-
-	// set header fields
-	req.Header.Set("Cache-Control", "no-cache")
-
-	// define a Context for the request
-	ctx := context.Background()
-
-	// run it and capture the response
-	var respData ResponseStruct
-	if err := client.Run(ctx, req, &respData); err != nil {
-		log.Fatal(err)
+	jsonData := map[string]string{
+		"query": `
+			{
+				people {
+					firstname
+					lastname
+					website
+					}
+				}
+			}
+		`,
 	}
+	jsonValue, _ := json.Marshal(jsonData)
+	request, err := http.NewRequest("POST", "https://test.anosa.ga/graphql", bytes.NewBuffer(jsonValue))
+	if err != nil {
+		panic(err)
+	}
+
+	client := &http.Client{Timeout: time.Second * 10}
+	response, err := client.Do(request)
+	if err != nil {
+		panic(err)
+	}
+	data, _ := ioutil.ReadAll(response.Body)
+	t.Error(string(data))
 }
