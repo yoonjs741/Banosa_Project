@@ -26,6 +26,7 @@ func TestGetQueryresp(t *testing.T) {
 		`,
 	}
 	jsonValue, _ := json.Marshal(jsonData)
+	t.Error(string(jsonValue))
 	request, err := http.NewRequest("POST", "https://test.anosa.ga/graphql", bytes.NewBuffer(jsonValue))
 	if err != nil {
 		panic(err)
