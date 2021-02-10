@@ -106,11 +106,11 @@ func HelloPricingJSON(c echo.Context) error {
 		log.Println(err2)
 		return c.String(http.StatusOK, "Please check coupon")
 	}
-	priceResultJSON := new(ResponsePriceJSON)
-
-	priceResultJSON.Value = c.QueryParam("value")
-	priceResultJSON.Coupon = c.QueryParam("coupon")
-	priceResultJSON.Price = fmt.Sprintf("%d", pricing.GetPrice(valueInt, discountInt))
+	priceResultJSON := ResponsePriceJSON{
+		Value:  c.QueryParam("value"),
+		Coupon: c.QueryParam("coupon"),
+		Price:  fmt.Sprintf("%d", pricing.GetPrice(valueInt, discountInt)),
+	}
 
 	return c.JSON(http.StatusOK, priceResultJSON)
 }
