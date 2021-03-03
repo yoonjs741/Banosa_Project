@@ -119,3 +119,7 @@ func HelloPricingJSON(c echo.Context) error {
 	return c.String(http.StatusOK, graphql.GetQueryresp())
 }
 */
+func ParseHTML(c echo.Context) error {
+	// return c.Render(http.StatusOK, "template.html", data)
+	return nil
+}
