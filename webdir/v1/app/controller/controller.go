@@ -3,10 +3,12 @@ package controller
 import (
 	"Banosa_Project/webdir/v1/app/factorial"
 	"Banosa_Project/webdir/v1/app/pricing"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/labstack/echo"
 )
@@ -17,10 +19,18 @@ type ResponseJSON struct {
 	Data  string `json:"Result"`
 }
 
+// ResponsePriceJSON : ResponsePrice JSON struct
 type ResponsePriceJSON struct {
 	Value  string
 	Coupon string
 	Price  string
+}
+
+type User struct {
+	FirstName string `json:"first_name"`
+	LastName  string `json:"last_name"`
+	Email     string `json:"email"`
+	CreateAt  time.Time
 }
 
 // HelloworldCTRL : Return string as 200 to CTRL
@@ -48,6 +58,31 @@ func HelloQueryCTRL(c echo.Context) error {
 // HelloParamCTRL : Return QueryString as http ok to CTRL
 func HelloParamCTRL(c echo.Context) error {
 	return c.String(http.StatusOK, c.QueryString())
+}
+
+// HelloYourNameCTRL : Return id query param
+func HelloYourNameCTRL(c echo.Context) error {
+	name := c.QueryParam("id")
+	if name == "" {
+		name = "World"
+	}
+	return c.String(http.StatusOK, fmt.Sprintf("Hello %s!", name))
+}
+
+// HelloUserInfoCTRL : Input JSON str, Reponse JSON str
+func HelloUserInfoCTRL(c echo.Context) error {
+	user := new(User)
+	err := json.NewDecoder(c.Request().Body).Decode(user)
+	if err != nil {
+		c.Response().Writer.WriteHeader(http.StatusBadRequest)
+		return err
+	}
+	user.CreateAt = time.Now()
+
+	// c.Response().Header().Set(echo.HeaderContentType, echo.MIMEApplicationJSONCharsetUTF8)
+	// c.Response().WriteHeader(http.StatusOK)
+
+	return c.JSON(http.StatusOK, user)
 }
 
 // HelloQueryFacto : Return QueryFacto string as http ok to CTRL
@@ -90,6 +125,7 @@ func HelloQueryFactoJSON(c echo.Context) error {
 	return c.JSON(http.StatusOK, factoResultJSON)
 }
 
+// HelloPricingJSON : Return price result by json
 func HelloPricingJSON(c echo.Context) error {
 	value := c.QueryParam("value")
 	discount := c.QueryParam("coupon")
