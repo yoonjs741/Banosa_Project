@@ -26,6 +26,7 @@ type ResponsePriceJSON struct {
 	Price  string
 }
 
+// User : Request, Response User struct
 type User struct {
 	FirstName string `json:"first_name"`
 	LastName  string `json:"last_name"`
@@ -151,10 +152,13 @@ func HelloPricingJSON(c echo.Context) error {
 	return c.JSON(http.StatusOK, priceResultJSON)
 }
 
+// HelloGQLJSON : TODO
 /*func HelloGQLJSON(c echo.Context) error {
 	return c.String(http.StatusOK, graphql.GetQueryresp())
 }
 */
+
+// ParseHTML : TODO
 func ParseHTML(c echo.Context) error {
 	// return c.Render(http.StatusOK, "template.html", data)
 	return nil
