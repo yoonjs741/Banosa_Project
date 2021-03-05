@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"text/template"
 	"time"
 
 	"github.com/labstack/echo"
@@ -32,6 +33,10 @@ type User struct {
 	LastName  string `json:"last_name"`
 	Email     string `json:"email"`
 	CreateAt  time.Time
+}
+
+type Template struct {
+	templates *template.Template
 }
 
 // HelloworldCTRL : Return string as 200 to CTRL
@@ -160,6 +165,12 @@ func HelloPricingJSON(c echo.Context) error {
 
 // ParseHTML : TODO
 func ParseHTML(c echo.Context) error {
-	// return c.Render(http.StatusOK, "template.html", data)
+	// return c.Render(http.StatusOK, "banosa.html", data)
+	w := c.Response().Writer
+	t, err := template.New("").Parse("template/banosa.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+	t.ExecuteTemplate(w, "banosa.html", nil)
 	return nil
 }
