@@ -19,6 +19,7 @@ func Route() *echo.Echo {
 	e.GET("/price", controller.HelloPricingJSON)
 	e.GET("/name", controller.HelloYourNameCTRL)
 	e.POST("/userinfo", controller.HelloUserInfoCTRL)
+	e.GET("/strtest", controller.HelloStrcutCTRL)
 	//	e.GET("/gql", controller.HelloGQLJSON)
 	return e
 }

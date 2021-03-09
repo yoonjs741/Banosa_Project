@@ -35,6 +35,14 @@ type User struct {
 	CreateAt  time.Time
 }
 
+type Dict struct {
+	Data datablock `json:"data"`
+}
+
+type datablock struct {
+	data map[int]string
+}
+
 type Template struct {
 	templates *template.Template
 }
@@ -157,12 +165,6 @@ func HelloPricingJSON(c echo.Context) error {
 	return c.JSON(http.StatusOK, priceResultJSON)
 }
 
-// HelloGQLJSON : TODO
-/*func HelloGQLJSON(c echo.Context) error {
-	return c.String(http.StatusOK, graphql.GetQueryresp())
-}
-*/
-
 // ParseHTML : TODO
 func ParseHTML(c echo.Context) error {
 	// return c.Render(http.StatusOK, "banosa.html", data)
@@ -173,4 +175,27 @@ func ParseHTML(c echo.Context) error {
 	}
 	t.ExecuteTemplate(w, "banosa.html", nil)
 	return nil
+}
+
+func HelloStrcutCTRL(c echo.Context) error {
+	dic := newDict()
+	dic.data[1] = "A"
+	dic.data[2] = "B"
+
+	dictdata := Dict{
+		Data: *dic,
+	}
+
+	byte, err := json.Marshal(dictdata)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return c.String(http.StatusOK, string(byte))
+}
+
+func newDict() *datablock {
+	d := datablock{}
+	d.data = map[int]string{}
+	return &d
 }
