@@ -199,3 +199,55 @@ func newDict() *datablock {
 	d.data = map[int]string{}
 	return &d
 }
+
+// func New() error {
+
+// 	// var test string , test := "" 는 언뜻 같아 보일 수 있지만, 엄연히 다르다
+// 	// var test string은 test를 string 타입으로 선언만 했지, 값을 초기화 하진 않았다.
+// 	// test = "" 은 test를 string 타입으로 선언함과 동시에 값을 초기화 했다.
+// 	var test string
+// 	test = ""
+
+// 	// 구조체의 선언과 초기화도 마찬가지.
+// 	// var hosts *Hostzones의 경우, Hostzones의 포인터로 hosts를 선언만 한 것이고,
+// 	// hosts1 := new(Hostzones)의 경우, Hostzones의 포인터로 hosts1를 선언함과 동시에 값을 초기화 한 것이다.
+// 	var hosts *Hostzones
+
+// 	hosts1 := new(Hostzones)
+// 	hosts2 := new(Hostzones)
+// 	if true {
+// 		hosts.Hostzones = hosts1
+// 		}  false {
+// 		hosts= hosts2
+
+// 	}
+
+// 	//
+// 	for _, v := range respData.Record.Get {
+// 		log.Println(v.Active.Types)
+// 		if len(v.Active.Types.NS) != 0 {
+// 			hostlist := Hostlist{}
+// 			hostlist.DomainName = v.Name
+// 			recordscnt := CountRecord(v.Name)
+// 			hostlist.RecordsCount = recordscnt
+// 			hosts.Hostzones = append(hosts.Hostzones, hostlist)
+// 		}
+// 	}
+
+// 	// 아래 코드에서는 panic이 발생함.
+// 	// hostlist를 Hostlist 구조체 타입으로 선언만 했지, 초기화하지 않은 상태에서 if 문을 태워서 그런 것 같음.
+// 	// hostlist를 for문 밖에서 선언한것도 NG
+// 	var hostlist Hostlist
+// 	var hosts *Hostzones
+
+// 	for _, v := range respData.Record.Get {
+// 		if len(v.Active.Types.NS) != 0 {
+// 			hostlist.DomainName = v.Name
+// 			recordscnt := CountRecord(v.Name)
+// 			hostlist.RecordsCount = recordscnt
+// 			hosts.Hostzones = append(hosts.Hostzones, hostlist)
+// 		}
+// 	}
+
+// 	return nil
+// }
