@@ -247,7 +247,7 @@ func newDict() *datablock {
 // 			hostlist.RecordsCount = recordscnt
 // 			hosts.Hostzones = append(hosts.Hostzones, hostlist)
 // 		}
-// 	}
+// 	}test
 
 // 	return nil
 // }
