@@ -204,9 +204,9 @@ func newDict() *datablock {
 
 // 	// var test string , test := "" 는 언뜻 같아 보일 수 있지만, 엄연히 다르다
 // 	// var test string은 test를 string 타입으로 선언만 했지, 값을 초기화 하진 않았다.
-// 	// test = "" 은 test를 string 타입으로 선언함과 동시에 값을 초기화 했다.
+// 	// test := "" 은 test를 string 타입으로 선언함과 동시에 값을 초기화 했다.
 // 	var test string
-// 	test = ""
+// 	test := ""
 
 // 	// 구조체의 선언과 초기화도 마찬가지.
 // 	// var hosts *Hostzones의 경우, Hostzones의 포인터로 hosts를 선언만 한 것이고,
@@ -250,4 +250,33 @@ func newDict() *datablock {
 // 	}test
 
 // 	return nil
+// }
+
+// Golang 구조체 관련 참고 사항
+// (1) 아래 코드는 비교하는데 문제가 없는데,
+// type lost2 struct {
+// 	End string
+// }
+// type lost1 struct {
+// 	Type lost2 `json:"record"`
+// }
+
+// var t1 lost1
+// if t1 == (lost1{}) {
+// 	t.Error("test")
+// }
+
+// (2) 이건 문제가 생김. 비교를 못함.
+// 구조체 필드가 배열로 되어 있으면, 비교할 때에도 배열 인덱스를 지정해줘야함.
+// 인덱스가 없으면 뭘 비교해야할지 몰라서 그러는듯.
+// type lost2 struct {
+// 	End string
+// }
+// type lost1 struct {
+// 	Type []lost2 `json:"record"`
+// }
+
+// var t1 lost1
+// if t1 == (lost1{}) {
+// 	t.Error("test")
 // }
