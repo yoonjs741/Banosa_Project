@@ -280,3 +280,12 @@ func newDict() *datablock {
 // if t1 == (lost1{}) {
 // 	t.Error("test")
 // }
+
+// test := []interface{}{} 이거 보고 뭔지 몰라서 찾아봄
+// 아래가 설명
+// interface{} is the empty interface type
+// []interface{} is a slice of type empty interface
+// interface{}{} is an empty interface type composite literal
+// []interface{}{} is a slice of type empty interface composite literals
+// []interface{}{} 의 의미는,
+// []interface{}를 선언하고, {}빈값으로 초기화를 하겠다. 라는 뜻이란다.
